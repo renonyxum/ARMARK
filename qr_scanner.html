@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            width: 100vw;
+        }
+        #video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures video covers the area without distortion */
+            /* transform: scaleX(-1); Uncomment this if you are using the front camera and want it mirrored */
+        }
+        canvas {
+            display: none; /* Canvas is used for processing, not display */
+        }
+        #loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2em;
+            color: #eee;
+            z-index: 10;
+        }
+        #status-message {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1em;
+            color: #ccc;
+            z-index: 10;
+        }
+    </style>
+    <!-- jsQR library for QR code scanning -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+</head>
+<body>
+    <div id="video-container">
+        <video id="qr-video" playsinline></video>
+        <div id="loading-message">Loading camera...</div>
+        <div id="status-message">Point your camera at a QR code.</div>
+    </div>
+    
+    <!-- Link to the QR scanner JavaScript -->
+    <script src="./js/qr_scanner.js"></script>
+</body>
+</html>
